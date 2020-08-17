@@ -25,9 +25,7 @@ export const getAllCategory = async () =>
       }   //catch
 } //getAllCategory
 
-export async function getCategoryById(
-    categoryId: number | undefined
-  ): Promise<Category> {
+export async function getCategoryById(  categoryId: number | undefined  ): Promise<Category> {
     try {
       let res = await reduxClient.get(`/category/${categoryId}`);
   
@@ -45,5 +43,3 @@ export async function getCategoryById(
       }
     }
   } //end of class
-
-
