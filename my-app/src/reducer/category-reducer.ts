@@ -1,12 +1,14 @@
 import { ICategoryState } from ".";  // index.ts
 import { AnyAction } from "redux";
 import { categoryTypes } from "../action-mapper/Category-action-mappers";
+import {Category} from "../model/Category";
 
 
 const initialState:ICategoryState = 
 {
     allCategory:[],
-    errorMessage:''
+    errorMessage:''   /*   ,
+    oneCategory: new Category(0,"")   */
 }
     
 export const categoryReducer = (state = initialState, action:AnyAction ) =>
@@ -24,7 +26,25 @@ export const categoryReducer = (state = initialState, action:AnyAction ) =>
                 ...state,
                 errorMessage:'Failed to Retrieve Categories'
             }
+      
         } 
+
+/*
+        case categoryTypes.GET_ONE_CATEGORY:{
+            return{
+                ...state,
+                oneCategory: action.payload.oneCategory
+            }
+        }
+        case categoryTypes.FAILED_TO_RETRIEVE_ONE_CATEGORY:{
+            return{
+                ...state,
+                errorMessage:'Failed to retrieve category'
+            }
+        }
+
+
+*/
         default:
             return state;
     }

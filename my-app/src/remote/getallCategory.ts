@@ -25,7 +25,8 @@ export const getAllCategory = async () =>
       }   //catch
 } //getAllCategory
 
-export async function getCategoryById(  categoryId: number | undefined  ): Promise<Category> {
+/*
+export const getCategoryById = async(  categoryId: number )=> {
     try {
       let res = await reduxClient.get(`/category/${categoryId}`);
   
@@ -43,3 +44,23 @@ export async function getCategoryById(  categoryId: number | undefined  ): Promi
       }
     }
   } //end of class
+*/
+
+
+  export const getCategoryById = async ( categoryId: number|undefined ) => 
+  {
+    try 
+    {
+        let response =  await reduxClient.get(`/category/${categoryId}`);
+      if(response.status === 200)
+{    return response.data    }
+else
+  {  throw new CategoryNotFoundError(); }
+
+    } 
+    catch (e) 
+    {
+      throw new InternalServerError();
+    }
+ }
+

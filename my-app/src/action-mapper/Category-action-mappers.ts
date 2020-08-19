@@ -1,15 +1,12 @@
 import { Dispatch } from "redux";
-import { Category } from "../model/Category";
 import { getAllCategory } from "../remote/getallCategory";
-import { getCategoryById } from "../remote/getallCategory";
+
 
 export const categoryTypes = 
 {
     GET_ALL_CATEGORY: 'REDUX_GET_ALL_CATEGORY', // Good
-    FAILED_TO_RETRIEVE_CATEGORY:'REDUX_FAILED_TO_RETRIEVE_CATEGORY',  //Bad
-   
-    GET_ONE_CATEGORY: 'GET_ONE_CATEGORY',   
-    FAILED_TO_RETRIEVE_ONE_CATEGORY: 'FAILED_TO_RETRIEVE_ONE_CATEGORY'
+    FAILED_TO_RETRIEVE_CATEGORY:'REDUX_FAILED_TO_RETRIEVE_CATEGORY'  //Bad
+     
 }
 
 
@@ -39,25 +36,3 @@ export const getAllCategoryActionMapper = () => async (dispatch:Dispatch) => {
     //function completes
 }
 
-
-
-export const getOneVisualizationActionMapper = (id:number) => async (dispatch:Dispatch) => 
-{
-    try {
-        let oneCategory = await getCategoryById(id)
-    
-        dispatch({
-            type: categoryTypes.GET_ONE_CATEGORY,
-            payload:{
-                oneCategory
-            }
-        })
-    } catch (e) {
-        dispatch({
-            type: categoryTypes.FAILED_TO_RETRIEVE_ONE_CATEGORY
-        })
-    }
-
-} // 
-    
-    
