@@ -1,5 +1,5 @@
 # advicenyc-ReactRedux
-adviceNYC through React
+adviceNYC through React, take data from DB
 
 
 Installiation:
